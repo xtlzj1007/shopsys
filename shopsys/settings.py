@@ -1,3 +1,4 @@
+# coding:utf8
 """
 Django settings for shopsys project.
 
@@ -15,7 +16,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -26,7 +26,6 @@ SECRET_KEY = 'j968hlsxir26y^cex@xlsmjj*)!2zzkgg7yf@e@qd#^_*cq+60'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,31 +69,42 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shopsys.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',  # 使用mysql数据库
+        'NAME': 'shopsys',  # 数据库名
+        'USER': 'shopsys',  # 数据库用户名
+        'PASSWORD': '12345678',  # 数据库密码,为安全起见应从系统环境变量读取os.environ['SHOPSYS_DB_PASS']
+        'HOST': '127.0.0.1',  # 数据库服务器ＩＰ
+        'PORT': '3306',  # 数据库服务器端口
+        'TEST': {},  # 测试数据库配置
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
+
+DATE_FORMAT = 'Y-m-d'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
