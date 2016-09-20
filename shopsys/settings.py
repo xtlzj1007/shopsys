@@ -15,7 +15,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SETTINGS_DIR = os.path.dirname(__file__)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'shopsys.apps.catalog',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,7 +56,9 @@ ROOT_URLCONF = 'shopsys.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(SETTINGS_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,14 +85,14 @@ WSGI_APPLICATION = 'shopsys.wsgi.application'
 
 DATABASES = {
     'default': {
-                                    # 使用mysql数据库
+        # 使用mysql数据库
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopsys',          # 数据库名
-        'USER': 'shopsys',          # 数据库用户名
-        'PASSWORD': '12345678',     # 数据库密码,为安全起见应从系统环境变量读取os.environ['SHOPSYS_DB_PASS']
-        'HOST': '127.0.0.1',        # 数据库服务器ＩＰ
-        'PORT': '3306',             # 数据库服务器端口
-        'TEST': {},                 # 测试数据库配置
+        'NAME': 'shopsys',  # 数据库名
+        'USER': 'shopsys',  # 数据库用户名
+        'PASSWORD': '12345678',  # 数据库密码,为安全起见应从系统环境变量读取os.environ['SHOPSYS_DB_PASS']
+        'HOST': '127.0.0.1',  # 数据库服务器ＩＰ
+        'PORT': '3306',  # 数据库服务器端口
+        'TEST': {},  # 测试数据库配置
     }
 }
 
